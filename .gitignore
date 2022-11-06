@@ -4,4 +4,6 @@ __pycache__
 storage
 .vscode
 .pytest_cache
+.mypy_cache
 .venv
+dist
