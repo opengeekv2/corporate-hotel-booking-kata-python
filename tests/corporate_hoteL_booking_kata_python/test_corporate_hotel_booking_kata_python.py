@@ -1,5 +1,6 @@
 from unittest import mock
-from corporate_hotel_booking_kata_python.domain.hotel_service import add_hotel, Hotel
+from corporate_hotel_booking_kata_python.domain.hotel_service import add_hotel
+from corporate_hotel_booking_kata_python.domain.model import Hotel
 
 
 @mock.patch("corporate_hotel_booking_kata_python.domain.hotel_service.save")

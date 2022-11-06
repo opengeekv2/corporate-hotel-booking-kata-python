@@ -1,5 +1,7 @@
+from unittest import mock
 from behave import given, when, then
 from corporate_hotel_booking_kata_python.domain import hotel_service
+from fake_infrastructure.hotel_repository import save
 
 
 @given(u'a hotel management system')
@@ -7,6 +9,7 @@ def step_impl(context):
     pass
 
 @when(u'we create a new hotel')
+@mock.patch("corporate_hotel_booking_kata_python.domain.hotel_service.save", new=save)
 def step_impl(context):
     hotel_service.add_hotel(0, "Fawlty Towers")
 
