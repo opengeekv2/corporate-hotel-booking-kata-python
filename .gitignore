@@ -7,3 +7,4 @@ storage
 .mypy_cache
 .venv
 dist
+.idea

@@ -1,7 +1,7 @@
 from unittest import mock
 from behave import given, when, then
 from corporate_hotel_booking_kata_python.domain import hotel_service
-from fake_infrastructure.hotel_repository import save
+from fake_infrastructure.hotel_repository import get, save
 
 
 @given(u'a hotel management system')
@@ -14,8 +14,10 @@ def step_impl(context):
     hotel_service.add_hotel(0, "Fawlty Towers")
 
 @when(u'a room')
+@mock.patch("corporate_hotel_booking_kata_python.domain.hotel_service.save", new=save)
+@mock.patch("corporate_hotel_booking_kata_python.domain.hotel_service.get", new=get)
 def step_impl(context):
-    raise NotImplementedError(u'STEP: When a room')
+    hotel_service.set_room(0, 0, hotel_service.RoomType.SINGLE_ROOM)
 
 
 @when(u'another room')
