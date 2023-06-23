@@ -27,3 +27,21 @@ class Hotel:
 
     def add_room(self, room: Room):
         self.rooms.insert(room.number, room)
+
+
+class Employee:
+    id: int
+
+    def __int__(self, id: int):
+        self.id = id
+
+
+
+class Company:
+    id: int
+    employees: List[Employee]
+
+    def __init__(self, id: int):
+        self.id = id
+        self.employees = []
+
