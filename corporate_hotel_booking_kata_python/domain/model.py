@@ -1,9 +1,9 @@
-from enum import Enum
+from enum import Enum, StrEnum, auto
 from typing import List
 
 
-class RoomType(Enum):
-    SINGLE_ROOM = 1
+class RoomType(StrEnum):
+    SINGLE_ROOM = auto()
 
 
 class Room:
@@ -32,7 +32,7 @@ class Hotel:
 class Employee:
     id: int
 
-    def __int__(self, id: int):
+    def __init__(self, id: int):
         self.id = id
 
 
