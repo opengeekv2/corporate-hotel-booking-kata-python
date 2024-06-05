@@ -18,7 +18,7 @@ def test_add_employee(company_repository: MagicMock):
 def test_add_employee_and_company_when_not_existing(company_repository: MagicMock):
     company_repository.get = MagicMock(return_value=None)
     company_repository.save = MagicMock()
-    add_employee(0, 0)
+    add_employee(1, 1)
     company: Company = company_repository.save.call_args.args[0]
-    assert company.id == 0
-    assert 0 in [employee.id for employee in company.employees]
+    assert company.id == 1
+    assert 1 in [employee.id for employee in company.employees]
