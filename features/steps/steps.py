@@ -25,3 +25,14 @@ def step_impl(context):
 @mock.patch("corporate_hotel_booking_kata_python.domain.company_service.company_repository", new=company_repository)
 def step_impl(context):
     company_service.add_employee(0, 0)
+
+@when(u'employee books a room')
+def step_impl(context):
+    booking_service.book_room(
+        0,
+        0,
+        'SINGLE_ROOM',
+        datetime.date(2024, 2, 14),
+        datetime.date(2024, 3, 14)
+    )
+
