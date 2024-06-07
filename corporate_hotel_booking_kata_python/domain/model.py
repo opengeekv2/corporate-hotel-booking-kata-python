@@ -1,5 +1,6 @@
 from enum import Enum, StrEnum, auto
 from typing import List
+from uuid import UUID
 
 
 class RoomType(StrEnum):
@@ -44,4 +45,10 @@ class Company:
     def __init__(self, id: int):
         self.id = id
         self.employees = []
+
+class Booking:
+    id: UUID
+
+    def __init__(self, id: UUID):
+        self.id = id
 
