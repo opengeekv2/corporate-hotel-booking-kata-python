@@ -1,10 +1,14 @@
 import datetime
 from unittest import mock
+from unittest.mock import MagicMock
+from uuid import UUID
+
 from behave import given, when, then
 from corporate_hotel_booking_kata_python.domain import hotel_service, company_service, booking_service
 from fake_infrastructure.hotel_repository import get, save
-from features.steps.fake_infrastructure import company_repository
+from features.steps.fake_infrastructure import company_repository, booking_repository
 
+_booking = None
 
 @given(u'a hotel management system')
 def step_impl(context):
@@ -26,13 +30,23 @@ def step_impl(context):
 def step_impl(context):
     company_service.add_employee(0, 0)
 
+guid_generator = MagicMock()
+guid_generator.get = MagicMock(return_value=UUID("84ab1798-4f0f-4a96-a151-6735ca9bc969"))
+
+
 @when(u'employee books a room')
+@mock.patch("corporate_hotel_booking_kata_python.domain.booking_service.booking_repository", new=booking_repository)
+@mock.patch("corporate_hotel_booking_kata_python.domain.booking_service.guid_generator", new=guid_generator)
 def step_impl(context):
-    booking_service.book_room(
+    context.booking = booking_service.book_room(
         0,
         0,
         'SINGLE_ROOM',
         datetime.date(2024, 2, 14),
         datetime.date(2024, 3, 14)
     )
+
+@then(u'he can book a room')
+def step_impl(context):
+    assert context.booking is not None
 

@@ -11,3 +11,4 @@ def get(id: int) -> Optional[Company]:
         return _companies[id]
     except IndexError:
         return None
+

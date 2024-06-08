@@ -1,7 +1,7 @@
+from datetime import date
 from enum import Enum, StrEnum, auto
 from typing import List
 from uuid import UUID
-
 
 class RoomType(StrEnum):
     SINGLE_ROOM = auto()
@@ -48,7 +48,18 @@ class Company:
 
 class Booking:
     id: UUID
+    employee_id: int
+    hotel_id: int
+    room_type: str
+    checkin_date: date
+    checkout_date: date
 
-    def __init__(self, id: UUID):
+    def __init__(self, id: UUID, employee_id: int, hotel_id: int, room_type: str, checkin_date: date, checkout_date: date):
         self.id = id
+        self.employee_id = employee_id
+        self.hotel_id = hotel_id
+        self.room_type = room_type
+        self.checkin_date = checkin_date
+        self.checkout_date = checkout_date
+
 
